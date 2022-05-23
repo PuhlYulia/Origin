@@ -32,42 +32,43 @@
 //      ]
 //    }
 // }
+    
 
 function sendRequest(name, phone, address, goods, sum) {
-        let data = {goods: [], order: {address, sum}, client {name, phone}};
     
-        let countOfGoods = goods.length;
-    
-        for (let i = 0; i < countOfGoods; i ++ 1) {
-            data.goods.push({title:goods[i].title, count: good[i].count});
-        }
-    
-        data.order.address = address;
-        data.order.sum = sum;
-        data.goods = [i];
-        data.client = 'Иван' + phone;
-    
-        let jsonData = JSON.stringify({data});
-    
-        return jsonData;
+    let data = {client: name + ' ' + phone, order: {address, sum}, goods: []};
+
+    let countOfGoods = goods.length;
+
+    for (let i = 0; i < countOfGoods; i ++) {
+        data.goods.push({title:goods[i].title, count: goods[i].count});
     }
+
+    data.order.address = 'ул.' + ' ' + address.street + ',' + ' ' + 'дом' + ' ' + address.house + ',' + ' ' + address.entrance + ' ' + 'подъезд' + ',' + ' ' + address.floor + ' ' + 'этаж' + ',' + ' ' + 'кв' + ' ' + address.flat;
     
+    data.order.sum = sum;
+
+    let jsonData = JSON.stringify({data});
+
+    return jsonData;
+}
+
 
 //function sendRequest(name, phone, address, goods, sum) {
 //    let data = {goods: [], order: {}};
 
-  //  let countOfGoods = goods.length;
+//  let countOfGoods = goods.length;
 
-    //for (let i = 0; i <= countOfGoods; i += 1) {
-      //  data.goods.push(goods[i].title);
-    //}
+//for (let i = 0; i <= countOfGoods; i += 1) {
+  //  data.goods.push(goods[i].title);
+//}
 
-    //data.order.address = address;
-    //data.order.sum = name + phone + address + goods + sum;
+//data.order.address = address;
+//data.order.sum = name + phone + address + goods + sum;
 
-    //data.client = 'Иван';
+//data.client = 'Иван';
 
-    //let jsonData = JSON.stringify(data);
+//let jsonData = JSON.stringify(data);
 
-    //return jsonData;
+//return jsonData;
 //}
